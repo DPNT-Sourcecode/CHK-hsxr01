@@ -21,7 +21,8 @@ public class CheckoutSolutionTest {
 
     @Test
     public void singleItemATest() {
-        assertThat(checkout.checkout("A"), equalTo(0));
+        assertThat(checkout.checkout("A"), equalTo(50));
     }
 }
+
 

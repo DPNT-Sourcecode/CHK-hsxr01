@@ -10,7 +10,7 @@ public class CheckoutSolution {
         }
     };
 
-    private Map<char, Map<Integer, Integer>> = skuOffers = new HashMap<char, Map<Integer, Integer>>() {
+    private Map<char, Map<Integer, Integer>> skuOffers = new HashMap<char, Map<Integer, Integer>>() {
         {
             put('A', new HashMap<Integer, Integer>() {
                 {
@@ -36,6 +36,7 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
 
