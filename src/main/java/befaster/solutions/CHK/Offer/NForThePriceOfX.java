@@ -1,4 +1,5 @@
-package befaster.solutions.CHK;
+package befaster.solutions.CHK.Offer;
 
-public class MoneyOffDiscount implements Discount {
+public class NForThePriceOfX implements Offer {
 }
+

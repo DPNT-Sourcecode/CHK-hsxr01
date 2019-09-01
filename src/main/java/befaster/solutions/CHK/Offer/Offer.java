@@ -1,5 +1,6 @@
-package befaster.solutions.CHK;
+package befaster.solutions.CHK.Offer;
 
-public interface Discount {
+public interface Offer {
 
 }
+

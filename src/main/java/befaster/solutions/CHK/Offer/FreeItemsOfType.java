@@ -1,4 +1,6 @@
-package befaster.solutions.CHK;
+package befaster.solutions.CHK.Offer;
 
-public class FreeItemDiscount implements Discount {
+public class FreeItemsOfType implements Offer {
+    String item;
 }
+
