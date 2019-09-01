@@ -8,4 +8,3 @@ public class Item {
     Character sku;
     List<Offer> discounts;
 }
-
