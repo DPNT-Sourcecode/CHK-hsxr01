@@ -10,8 +10,9 @@ public class Basket {
         if (items.containsKey(sku)) {
             items.put(sku, items.get(sku) + 1);
         } else {
-            items.put(sku, items.get(sku) + 1);
+            items.put(sku, 1);
         }
     }
 }
+
 
