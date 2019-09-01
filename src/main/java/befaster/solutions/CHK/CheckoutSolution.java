@@ -50,11 +50,14 @@ public class CheckoutSolution {
                     matchedMinimum = minimum;
                 }
             }
-            total -= skuToValue.get(sku) * matchedMinimum;
-            total += skuOffers.get(sku).get(matchedMinimum);
+            if (matchedMinimum > 0) {
+                total -= skuToValue.get(sku) * matchedMinimum;
+                total += skuOffers.get(sku).get(matchedMinimum);
+            }
         }
         return total;
     }
 }
+
 
 
