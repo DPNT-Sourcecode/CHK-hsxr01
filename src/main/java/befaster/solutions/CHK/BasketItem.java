@@ -14,9 +14,7 @@ public class BasketItem {
         this.quantity = quantity;
     }
 
-    void add() {
+    void addAnother() {
         quantity++;
     }
 }
-
-

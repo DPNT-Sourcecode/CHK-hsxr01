@@ -10,10 +10,9 @@ public class Basket {
 
     void add(Item item) {
         if (map.containsKey(item.sku)) {
-            map.get(item.sku).add();
+            map.get(item.sku).addAnother();
         } else {
             BasketItem basketItem = new BasketItem(item);
         }
     }
 }
-
