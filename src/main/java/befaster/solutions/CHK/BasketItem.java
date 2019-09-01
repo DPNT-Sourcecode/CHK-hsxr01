@@ -10,11 +10,13 @@ public class BasketItem {
     }
 
     public BasketItem(Item item, Integer quantity) {
-        
+        this.item = item;
+        this.quantity = quantity;
     }
 
     void add() {
         quantity++;
     }
 }
+
 
