@@ -63,8 +63,12 @@ public class CheckoutSolution {
             Character sku = skuEntry.getKey();
             if (!skuOffers.containsKey(sku)) {continue;}
             Integer numberFound = skuEntry.getValue();
-            while (skuOffers.get(sku))
+            for (:
+                 ) {
+                
+            }
         }
         return total;
     }
 }
+
