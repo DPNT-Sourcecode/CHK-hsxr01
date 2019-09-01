@@ -94,6 +94,3 @@ public class CheckoutSolutionTest {
         assertThat(checkout.checkout("ABCDABA"), equalTo(50 + 30 + 20 + 15 + 50 + 30 + 50 - 150 + 130 - 60 + 45));
     }
 }
-
-
-

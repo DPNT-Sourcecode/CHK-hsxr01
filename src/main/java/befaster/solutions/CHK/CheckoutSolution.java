@@ -3,7 +3,7 @@ package befaster.solutions.CHK;
 import java.util.Map;
 import java.util.HashMap;
 import java.lang.Math;
-import java.util.ArrayList;
+import javafx.util.Pair;
 
 public class CheckoutSolution {
     private Map<Character, Integer> skuToValue = new HashMap<Character, Integer>() {
@@ -12,17 +12,17 @@ public class CheckoutSolution {
             put('B', 30);
             put('C', 20);
             put('D', 15);
-            put('F', 40);
+            put('E', 40);
         }
     };
 
-    private Map<Character, Map<Integer, Integer>> skuOffers = new HashMap<Character, Map<Integer, Integer>>() {
+    private Map<Character, Map<Integer, Pair<Integer, Map<Character, Integer>>>> skuOffers = new HashMap<Character, Map<Integer, Pair<Integer, Map<Character, Integer>>>>() {
         {
-            Map<Integer, > offerA = new HashMap<Integer, Integer>();
-            offerA.put(3, 130);
-            offerA.put(5, 200);
-            Map<Integer, Integer> offerB = new HashMap<Integer, Integer>();
-            offerB.put(2, 45);
+            Map<Integer, Pair<Integer, Map<Character, Integer>>> offerA = new HashMap<Integer, Pair<Integer, Map<Character, Integer>>>();
+            offerA.put(3, new Pair<Integer, Map<Character, Integer>>(130, new HashMap<Character, Integer>()));
+            offerA.put(5, new Pair<Integer, Map<Character, Integer>>(200, new HashMap<Character, Integer>()));
+            Map<Integer, Pair<Integer, Map<Character, Integer>>> offerB = new HashMap<Integer, Pair<Integer, Map<Character, Integer>>>();
+            offerB.put(2, new Pair<Integer, Map<Character, Integer>>(45, new HashMap<Character, Integer>()));
             put('A', offerA);
             put('B', offerB);
         }
@@ -64,6 +64,3 @@ public class CheckoutSolution {
         return total;
     }
 }
-
-
-
