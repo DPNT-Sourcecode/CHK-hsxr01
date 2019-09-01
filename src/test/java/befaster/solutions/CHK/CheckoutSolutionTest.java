@@ -60,8 +60,8 @@ public class CheckoutSolutionTest {
     }
 
     @Test
-    public void moreThanItemOfferBAppliedOnceTest() {
-        assertThat(checkout.checkout("BBBB"), equalTo(30 + 30 + 30 + 30 - 60 + 45));
+    public void moreThanItemOfferBAppliedMultipleTimesTest() {
+        assertThat(checkout.checkout("BBBB"), equalTo(30 + 30 + 30 + 30 - 60 + 45 - 60 + 45));
     }
 
     @Test
@@ -84,4 +84,5 @@ public class CheckoutSolutionTest {
         assertThat(checkout.checkout("ABCDABA"), equalTo(50 + 30 + 20 + 15 + 50 + 30 + 50 - 150 + 130 - 60 + 45));
     }
 }
+
 
