@@ -16,6 +16,11 @@ public class CheckoutSolution {
         }
     };
 
+    /**
+     * map off key to offer
+     * the value pair represents the discount to be applied and the free items to be given in the form of a map where
+     * the key is the sku and the value is the number of items to give for free
+     */
     private Map<Character, Map<Integer, Pair<Integer, Map<Character, Integer>>>> skuOffers = new HashMap<Character, Map<Integer, Pair<Integer, Map<Character, Integer>>>>() {
         {
             Map<Integer, Pair<Integer, Map<Character, Integer>>> offerA = new HashMap<Integer, Pair<Integer, Map<Character, Integer>>>();
@@ -23,6 +28,12 @@ public class CheckoutSolution {
             offerA.put(5, new Pair<Integer, Map<Character, Integer>>(200, new HashMap<Character, Integer>()));
             Map<Integer, Pair<Integer, Map<Character, Integer>>> offerB = new HashMap<Integer, Pair<Integer, Map<Character, Integer>>>();
             offerB.put(2, new Pair<Integer, Map<Character, Integer>>(45, new HashMap<Character, Integer>()));
+            Map<Integer, Pair<Integer, Map<Character, Integer>>> offerE = new HashMap<Integer, Pair<Integer, Map<Character, Integer>>>();
+            offerB.put(2, new Pair<Integer, Map<Character, Integer>>(0, new HashMap<Character, Integer>() {
+                {
+                    put('B', 1);
+                }
+            }));
             put('A', offerA);
             put('B', offerB);
         }
@@ -64,3 +75,4 @@ public class CheckoutSolution {
         return total;
     }
 }
+
