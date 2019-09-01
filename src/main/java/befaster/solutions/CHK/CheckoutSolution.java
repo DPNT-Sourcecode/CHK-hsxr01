@@ -34,10 +34,27 @@ public class CheckoutSolution {
             total += skuToValue.get(sku);
             found.put(sku, found.containsKey(sku) ? found.get(sku) + 1 : 1);
         }
-        for(Map<Character, Integer> foundSku: found.entrySet()) {
-
+        for(Map.Entry<Character, Integer> entry : found.entrySet()) {
+            Character sku = entry.getKey();
+            if (!skuOffers.containsKey(sku)) {continue;}
+            Integer numberFound = entry.getValue();
+            Integer matchedMinimum = 0;
+            for(Map.Entry<Integer, Integer> offerEntry : skuOffers.get(sku).entrySet()) {
+                Integer minimum = offerEntry.getKey();
+                if (minimum > numberFound) {continue;}
+                if (minimum == numberFound) {
+                    matchedMinimum = minimum;
+                    break;
+                }
+                if (matchedMinimum < minimum) {
+                    matchedMinimum = minimum;
+                }
+            }
+            total -= skuToValue.get(sku) * matchedMinimum;
+            total += skuOffers.get(sku).get(matchedMinimum);
         }
         return total;
     }
 }
+
 

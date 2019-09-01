@@ -23,4 +23,20 @@ public class CheckoutSolutionTest {
     public void singleItemATest() {
         assertThat(checkout.checkout("A"), equalTo(50));
     }
+
+    @Test
+    public void moreThanOneItemATest() {
+        assertThat(checkout.checkout("AA"), equalTo(100));
+    }
+
+    @Test
+    public void ItemAOfferTest() {
+        assertThat(checkout.checkout("AAA"), equalTo(130));
+    }
+
+    @Test
+    public void moreThanItemOfferATest() {
+        assertThat(checkout.checkout("AAAA"), equalTo(180));
+    }
 }
+
