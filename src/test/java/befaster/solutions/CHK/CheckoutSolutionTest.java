@@ -24,5 +24,3 @@ public class CheckoutSolutionTest {
         assertThat(checkout.checkout("A"), equalTo(50));
     }
 }
-
-
