@@ -5,6 +5,6 @@ public class CheckoutSolution {
         if (skus == "") {
             return -1;
         }
+        return -1;
     }
 }
-

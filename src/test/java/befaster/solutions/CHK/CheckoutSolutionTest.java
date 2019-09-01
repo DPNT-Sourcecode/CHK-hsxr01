@@ -19,4 +19,3 @@ public class CheckoutSolutionTest {
         assertThat(checkout.checkout(""), equalTo(-1));
     }
 }
-
