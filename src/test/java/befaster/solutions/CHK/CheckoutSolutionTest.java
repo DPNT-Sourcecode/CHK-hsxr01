@@ -21,7 +21,7 @@ public class CheckoutSolutionTest {
 
     @Test
     public void invalidTest() {
-        assertThat(checkout.checkout("E"), equalTo(-1));
+        assertThat(checkout.checkout("F"), equalTo(-1));
     }
 
     @Test
@@ -37,6 +37,16 @@ public class CheckoutSolutionTest {
     @Test
     public void ItemAOfferTest() {
         assertThat(checkout.checkout("AAA"), equalTo(50 + 50 + 50 - 150 + 130));
+    }
+
+    @Test
+    public void ItemAOffer2Test() {
+        assertThat(checkout.checkout("AAAAA"), equalTo(50 + 50 + 50 + 50 + 50 - 250 + 200));
+    }
+
+    @Test
+    public void ItemAOffer1And2Test() {
+        assertThat(checkout.checkout("AAAAAAAA"), equalTo(50 + 50 + 50 + 50 + 50 + 50 + 50 + 50 - 250 + 200 - 150 + 130));
     }
 
     @Test
@@ -84,5 +94,6 @@ public class CheckoutSolutionTest {
         assertThat(checkout.checkout("ABCDABA"), equalTo(50 + 30 + 20 + 15 + 50 + 30 + 50 - 150 + 130 - 60 + 45));
     }
 }
+
 
 

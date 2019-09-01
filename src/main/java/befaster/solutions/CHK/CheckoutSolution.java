@@ -3,6 +3,7 @@ package befaster.solutions.CHK;
 import java.util.Map;
 import java.util.HashMap;
 import java.lang.Math;
+import java.util.ArrayList;
 
 public class CheckoutSolution {
     private Map<Character, Integer> skuToValue = new HashMap<Character, Integer>() {
@@ -11,12 +12,13 @@ public class CheckoutSolution {
             put('B', 30);
             put('C', 20);
             put('D', 15);
+            put('F', 40);
         }
     };
 
     private Map<Character, Map<Integer, Integer>> skuOffers = new HashMap<Character, Map<Integer, Integer>>() {
         {
-            Map<Integer, Integer> offerA = new HashMap<Integer, Integer>();
+            Map<Integer, > offerA = new HashMap<Integer, Integer>();
             offerA.put(3, 130);
             offerA.put(5, 200);
             Map<Integer, Integer> offerB = new HashMap<Integer, Integer>();
@@ -25,6 +27,7 @@ public class CheckoutSolution {
             put('B', offerB);
         }
     };
+
 
     public Integer checkout(String skus) {
         Integer total = 0;
@@ -61,5 +64,6 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
