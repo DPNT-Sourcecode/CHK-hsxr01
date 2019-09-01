@@ -2,7 +2,8 @@ package befaster.solutions.CHK;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.lang.Math;
+import java.util.List;
+import java.util.LinkedList;
 import javafx.util.Pair;
 
 public class CheckoutSolution {
@@ -21,21 +22,28 @@ public class CheckoutSolution {
      * the value pair represents the discount to be applied and the free items to be given in the form of a map where
      * the key is the sku and the value is the number of items to give for free
      */
-    private Map<Character, Map<Integer, Pair<Integer, Map<Character, Integer>>>> skuOffers = new HashMap<Character, Map<Integer, Pair<Integer, Map<Character, Integer>>>>() {
+    private Map<Character, List<Pair<Integer, Pair<Integer, Map<Character, Integer>>>>> skuOffers = new HashMap<Character, List<Pair<Integer, Pair<Integer, Map<Character, Integer>>>>>() {
         {
-            Map<Integer, Pair<Integer, Map<Character, Integer>>> offerA = new HashMap<Integer, Pair<Integer, Map<Character, Integer>>>();
-            offerA.put(3, new Pair<Integer, Map<Character, Integer>>(130, new HashMap<Character, Integer>()));
-            offerA.put(5, new Pair<Integer, Map<Character, Integer>>(200, new HashMap<Character, Integer>()));
-            Map<Integer, Pair<Integer, Map<Character, Integer>>> offerB = new HashMap<Integer, Pair<Integer, Map<Character, Integer>>>();
-            offerB.put(2, new Pair<Integer, Map<Character, Integer>>(45, new HashMap<Character, Integer>()));
-            Map<Integer, Pair<Integer, Map<Character, Integer>>> offerE = new HashMap<Integer, Pair<Integer, Map<Character, Integer>>>();
-            offerB.put(2, new Pair<Integer, Map<Character, Integer>>(0, new HashMap<Character, Integer>() {
+            put('A', new LinkedList<Pair<Integer, Pair<Integer, Map<Character, Integer>>>>() {
                 {
-                    put('B', 1);
+                    add(new Pair<Integer, Pair<Integer, Map<Character, Integer>>>(3, new Pair<>(130, new HashMap<>())));
+                    add(new Pair<Integer, Pair<Integer, Map<Character, Integer>>>(5, new Pair<>(200, new HashMap<>())));
                 }
-            }));
-            put('A', offerA);
-            put('B', offerB);
+            });
+            put('B', new LinkedList<Pair<Integer, Pair<Integer, Map<Character, Integer>>>>() {
+                {
+                    add(new Pair<Integer, Pair<Integer, Map<Character, Integer>>>(2, new Pair<>(45, new HashMap<>())));
+                }
+            });
+            put('E', new LinkedList<Pair<Integer, Pair<Integer, Map<Character, Integer>>>>() {
+                {
+                    add(new Pair<Integer, Pair<Integer, Map<Character, Integer>>>(2, new Pair<>(0, new HashMap<Character, Integer>() {
+                        {
+                            put('B', 1);
+                        }
+                    })));
+                }
+            });
         }
     };
 
@@ -43,36 +51,20 @@ public class CheckoutSolution {
     public Integer checkout(String skus) {
         Integer total = 0;
         Map<Character, Integer> found = new HashMap<Character, Integer>();
+        // first we will count the items found
         for (char sku: skus.toCharArray()) {
             if (!skuToValue.containsKey(sku)) {
                 return -1;
             }
-            total += skuToValue.get(sku);
             found.put(sku, found.containsKey(sku) ? found.get(sku) + 1 : 1);
         }
-        for(Map.Entry<Character, Integer> entry : found.entrySet()) {
-            Character sku = entry.getKey();
+        // now we will see if we should have any free items and remove them from the count
+        for(Map.Entry<Character, Integer> skuEntry : found.entrySet()) {
+            Character sku = skuEntry.getKey();
             if (!skuOffers.containsKey(sku)) {continue;}
-            Integer numberFound = entry.getValue();
-            Integer matchedMinimum = 0;
-            for(Map.Entry<Integer, Integer> offerEntry : skuOffers.get(sku).entrySet()) {
-                Integer minimum = offerEntry.getKey();
-                if (minimum > numberFound) {continue;}
-                if (minimum == numberFound) {
-                    matchedMinimum = minimum;
-                    break;
-                }
-                if (matchedMinimum < minimum) {
-                    matchedMinimum = minimum;
-                }
-            }
-            if (matchedMinimum > 0) {
-                Integer offersToApply = Math.floorDiv(numberFound, matchedMinimum);
-                total -= skuToValue.get(sku) * matchedMinimum * offersToApply;
-                total += skuOffers.get(sku).get(matchedMinimum) * offersToApply;
-            }
+            Integer numberFound = skuEntry.getValue();
+            while (skuOffers.get(sku))
         }
         return total;
     }
 }
-
