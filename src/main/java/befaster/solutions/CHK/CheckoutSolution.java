@@ -2,6 +2,7 @@ package befaster.solutions.CHK;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.lang.Math;
 
 public class CheckoutSolution {
     private Map<Character, Integer> skuToValue = new HashMap<Character, Integer>() {
@@ -51,10 +52,12 @@ public class CheckoutSolution {
                 }
             }
             if (matchedMinimum > 0) {
-                total -= skuToValue.get(sku) * matchedMinimum;
-                total += skuOffers.get(sku).get(matchedMinimum);
+                Integer offersToApply = Math.floorDiv(numberFound, matchedMinimum);
+                total -= skuToValue.get(sku) * matchedMinimum * offersToApply;
+                total += skuOffers.get(sku).get(matchedMinimum) * offersToApply;
             }
         }
         return total;
     }
 }
+
