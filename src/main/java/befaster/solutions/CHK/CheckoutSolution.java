@@ -26,12 +26,18 @@ public class CheckoutSolution {
 
     public Integer checkout(String skus) {
         Integer total = 0;
+        Map<Character, Integer> found = new HashMap<Character, Integer>();
         for (char sku: skus.toCharArray()) {
             if (!skuToValue.containsKey(sku)) {
                 return -1;
             }
             total += skuToValue.get(sku);
+            found.put(sku, found.containsKey(sku) ? found.get(sku) + 1 : 1);
+        }
+        for(Map<Character, Integer> foundSku: found.entrySet()) {
+
         }
         return total;
     }
 }
+
