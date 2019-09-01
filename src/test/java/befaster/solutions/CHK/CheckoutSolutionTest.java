@@ -16,6 +16,12 @@ public class CheckoutSolutionTest {
 
     @Test
     public void emptyTest() {
-        assertThat(checkout.checkout(""), equalTo(-1));
+        assertThat(checkout.checkout(""), equalTo(0));
+    }
+
+    @Test
+    public void singleItemATest() {
+        assertThat(checkout.checkout("A"), equalTo(0));
     }
 }
+
