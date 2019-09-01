@@ -4,7 +4,8 @@ import befaster.runner.SolutionNotImplementedException;
 
 public class HelloSolution {
     public String hello(String friendName) {
-        return "HelloWorld";
+        return "Hello, World!";
     }
 }
+
 
