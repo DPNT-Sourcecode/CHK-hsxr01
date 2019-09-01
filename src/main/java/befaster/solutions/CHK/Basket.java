@@ -1,18 +1,17 @@
 package befaster.solutions.CHK;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Basket {
-    List<BasketItem> items;
-    Map<Character, BasketItem> map = new HashMap<Character, BasketItem>();
+    Map<Character, Integer> items = new HashMap<Character, Integer>();
 
-    void add(Item item) {
-        if (map.containsKey(item.sku)) {
-            map.get(item.sku).addAnother();
+    void add(Character sku) {
+        if (items.containsKey(sku)) {
+            items.put(sku, items.get(sku) + 1);
         } else {
-            BasketItem basketItem = new BasketItem(item);
+            items.put(sku, items.get(sku) + 1);
         }
     }
 }
+
