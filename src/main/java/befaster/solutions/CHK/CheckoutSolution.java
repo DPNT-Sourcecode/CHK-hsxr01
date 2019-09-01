@@ -18,6 +18,7 @@ public class CheckoutSolution {
         {
             Map<Integer, Integer> offerA = new HashMap<Integer, Integer>();
             offerA.put(3, 130);
+            offerA.put(5, 200);
             Map<Integer, Integer> offerB = new HashMap<Integer, Integer>();
             offerB.put(2, 45);
             put('A', offerA);
@@ -60,4 +61,5 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
